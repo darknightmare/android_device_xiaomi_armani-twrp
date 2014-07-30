@@ -1,6 +1,6 @@
 USE_CAMERA_STUB := true
 
-# inherit from the proprietary version
+# Inherit from the proprietary version
 -include vendor/xiaomi/armani/BoardConfigVendor.mk
 
 TARGET_ARCH := arm
@@ -20,7 +20,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --dt device/xiaomi/armani/dt.img --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
 
-# fix this up by examining /proc/mtd on a running device
+# Fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 838860800
