@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_armani.mk
+    $(LOCAL_DIR)/device_armani.mk
