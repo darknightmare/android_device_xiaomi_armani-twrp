@@ -28,15 +28,16 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 6241112064
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/xiaomi/armani/kernel
+TARGET_PREBUILT_RECOVERY_KERNEL := device/xiaomi/armani/kernel
 
 # TWRP
 TARGET_RECOVERY_INITRC := device/xiaomi/armani/init.rc
 TARGET_RECOVERY_FSTAB := device/xiaomi/armani/recovery.fstab
 DEVICE_RESOLUTION := 720x1280
-TW_INTERNAL_STORAGE_PATH := "/storage/emulated/0"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "legacy"
-TW_EXTERNAL_STORAGE_PATH := "/storage/sdcard1"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard1"
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_HAS_NO_MISC_PARTITION := false
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -50,8 +51,6 @@ TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_WANTS_EMMC_BOOT := true
-BOARD_SUPPRESS_EMMC_WIPE := true
 HAVE_SELINUX := true
 
 # External storage mount
