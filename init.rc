@@ -16,7 +16,7 @@ on init
     mkdir /data
     mkdir /cache
     mkdir /storage 0550 system sdcard_r
-    mkdir /storage/sdcard1 0775 system system
+    mkdir /storage/sdcard1 0000 system system
     mount /tmp /tmp tmpfs
 
     chown root shell /tmp
