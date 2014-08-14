@@ -1,57 +1,58 @@
-USE_CAMERA_STUB := true
-
-# Inherit from the proprietary version
--include vendor/xiaomi/armani/BoardConfigVendor.mk
-
-TARGET_ARCH := arm
 TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := msm8226
+TARGET_BOOTLOADER_BOARD_NAME := armani
+
+# Architecture
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_SMP := true
+TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := krait
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-TARGET_BOOTLOADER_BOARD_NAME := armani
+# Flags
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
+# Kernel
+TARGET_PREBUILT_KERNEL := device/xiaomi/armani/prebuilt/kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_MKBOOTIMG_ARGS := --dt device/xiaomi/armani/dt.img --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
+BOARD_MKBOOTIMG_ARGS := --dt device/xiaomi/armani/prebuilt/dt.img --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
 
-# Fix this up by examining /proc/mtd on a running device
-BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
+# Partitions
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x1000000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x1000000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 838860800
+BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6241112064
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_PREBUILT_KERNEL := device/xiaomi/armani/kernel
-TARGET_PREBUILT_RECOVERY_KERNEL := device/xiaomi/armani/kernel
+# USB Mounting
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
-# TWRP
+# Recovery
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_USES_MMCUTILS := true
+
+# TWRP specific build flags
 TARGET_RECOVERY_INITRC := device/xiaomi/armani/init.rc
-TARGET_RECOVERY_FSTAB := device/xiaomi/armani/recovery.fstab
 DEVICE_RESOLUTION := 720x1280
+BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_15x24.h\"
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_INCLUDE_JB_CRYPTO := true
 TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-BOARD_HAS_NO_MISC_PARTITION := false
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_USES_MMCUTILS := true
 TW_DEFAULT_EXTERNAL_STORAGE := true
-RECOVERY_SDCARD_ON_DATA := true
 TW_FLASH_FROM_STORAGE := true
-BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_10x18.h\"
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
-BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_USERIMAGES_USE_EXT4 := true
-HAVE_SELINUX := true
-
-# External storage mount
-BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
+TW_MAX_BRIGHTNESS := 255
