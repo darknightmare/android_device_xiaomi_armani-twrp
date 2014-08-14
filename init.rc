@@ -8,8 +8,6 @@ on init
     export ANDROID_DATA /data
     export EXTERNAL_STORAGE /sdcard
     export SECONDARY_STORAGE /storage/sdcard1
-	
-    symlink /storage/sdcard1 /external_sd
 
     mkdir /boot
     mkdir /recovery
@@ -17,7 +15,8 @@ on init
     mkdir /data
     mkdir /cache
     mkdir /sdcard
-    mkdir /external_sd
+    mkdir /storage
+    mkdir /storage/sdcard1
 	
     mount tmpfs tmpfs /tmp
 

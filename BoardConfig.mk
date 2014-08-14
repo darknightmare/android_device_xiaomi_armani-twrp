@@ -1,8 +1,5 @@
-TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := msm8226
-TARGET_BOOTLOADER_BOARD_NAME := armani
-
 # Architecture
+TARGET_BOARD_PLATFORM := msm8226
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
@@ -11,9 +8,9 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := krait
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-# Flags
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+# Bootloader
+TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := armani
 
 # Kernel
 TARGET_PREBUILT_KERNEL := device/xiaomi/armani/prebuilt/kernel
@@ -31,8 +28,9 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6241112064
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# USB Mounting
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+# Flags
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # Recovery
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -40,7 +38,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USES_MMCUTILS := true
 
-# TWRP specific build flags
+# TWRP-Specific
 TARGET_RECOVERY_INITRC := device/xiaomi/armani/init.rc
 DEVICE_RESOLUTION := 720x1280
 BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_15x24.h\"
@@ -53,6 +51,7 @@ TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_FLASH_FROM_STORAGE := true
+TW_NO_USB_STORAGE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
