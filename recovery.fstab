@@ -3,5 +3,5 @@
 /cache          ext4        /dev/block/platform/msm_sdcc.1/by-name/cache
 /system         ext4        /dev/block/platform/msm_sdcc.1/by-name/system
 /data           ext4        /dev/block/platform/msm_sdcc.1/by-name/userdata
-/external_sd    vfat        /dev/block/mmcblk0p1 /dev/block/mmcblk0         flags=display="External SD";storage;wipeingui;removable
+/external_sd    vfat        /dev/block/mmcblk1p1 /dev/block/mmcblk1         flags=display="External SD";storage;wipeingui;removable
 /usb-otg        vfat        /dev/block/sda1 /dev/block/sda                  flags=display="USB OTG";storage;wipeingui;removable
